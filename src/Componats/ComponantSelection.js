@@ -1,52 +1,114 @@
-import styled from "styled-components";
-import * as React from "react";
-import SimpleGrow from "./COntrollSwitches"
+import React, { useState } from "react";
+import {
+  ScreenContainer,
+  CenteredDiv,
+  LeftSide,
+  RightSide,
+  GridContainer,
+  RowOne,
+  RowTwo,
+  Input,
+} from "./ComponantSelectionStyles";
+import SimpleGrow from "./COntrollSwitches";
 import HollowRectangle from "./HollowRectangle";
 
-const ScreenContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100vh;
-`;
-const CenteredDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
 
-const LeftSide = styled.div`
-  width: 70%;
-  background-color: #e0e0e0;
-  height: 100%; /* Set height to 100% of parent container (ScreenContainer) */
-`;
+function ComponantSelection() {
+  function hexToRgb(hex) {
+    hex = hex.replace("#", "");
 
-const RightSide = styled.div`
-  width: 30%;
-  background-color: #f5f5f5;
-  height: 100%; /* Set height to 100% of parent container (ScreenContainer) */
-`;
+    const red = parseInt(hex.substring(0, 2), 16);
+    const green = parseInt(hex.substring(2, 4), 16);
+    const blue = parseInt(hex.substring(4, 6), 16);
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 50% 50%;
-  height: 100%; /* Set height to 100% of parent container (RightSide) */
-`;
+    return {
+      r: red,
+      g: green,
+      b: blue,
+    };
+  }
 
-const RowOne = styled.div`
-  background-color: #e0e0e0;
-  border: 1px solid #ccc;
-`;
+  const [topShadowColor, setTopShadowColor] = useState(hexToRgb("#f50057"));
+  const [rightShadowColor, setRightShadowColor] = useState(hexToRgb("#08d5d9"));
+  const [bottomShadowColor, setBottomShadowColor] = useState(hexToRgb("#f50057"));
+  const [leftShadowColor, setLeftShadowColor] = useState(hexToRgb("#f50057"));
+  const [innerTopShadowColor, setInnerTopShadowColor] = useState(hexToRgb("#08d5d9"));
+  const [innerRightShadowColor, setInnerRightShadowColor] = useState(hexToRgb("#512da8"));
+  const [innerBottomShadowColor, setInnerBottomShadowColor] = useState(hexToRgb("#2196f3"));
+  const [innerLeftShadowColor, setInnerLeftShadowColor] = useState(hexToRgb("#f50057"));
 
-const RowTwo = styled.div`
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-`;
+  // console.log(hexToRgb(topShadowColor));
 
 
+  const ColourSelectionButtons = (
+    <div>
+      <div>
+        <label>Top Shadow Color:</label>
+        <Input
+          type="color"
+          value={topShadowColor}
+          onChange={(e) => setTopShadowColor(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Right Shadow Color:</label>
+        <Input
+          type="color"
+          value={rightShadowColor}
+          onChange={(e) => setRightShadowColor(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Bottom Shadow Color:</label>
+        <Input
+          type="color"
+          value={bottomShadowColor}
+          onChange={(e) => setBottomShadowColor(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Left Shadow Color:</label>
+        <Input
+          type="color"
+          value={leftShadowColor}
+          onChange={(e) => setLeftShadowColor(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Inner Top Shadow Color:</label>
+        <Input
+          type="color"
+          value={innerTopShadowColor}
+          onChange={(e) => setInnerTopShadowColor(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Inner Right Shadow Color:</label>
+        <Input
+          type="color"
+          value={innerRightShadowColor}
+          onChange={(e) => setInnerRightShadowColor(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Inner Bottom Shadow Color:</label>
+        <Input
+          type="color"
+          value={innerBottomShadowColor}
+          onChange={(e) => setInnerBottomShadowColor(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Inner Left Shadow Color:</label>
+        <Input
+          type="color"
+          value={innerLeftShadowColor}
+          onChange={(e) => setInnerLeftShadowColor(e.target.value)}
+        />
+      </div>
+    </div>
+  );
 
-function ExampleScreen() {
   return (
     <ScreenContainer>
       <LeftSide>
@@ -57,13 +119,13 @@ function ExampleScreen() {
       <RightSide>
         <GridContainer>
           <RowOne>
-            <SimpleGrow />  
+            <SimpleGrow />
           </RowOne>
-          <RowTwo>Row 2 content here</RowTwo>
+          <RowTwo>Row 2 content here{ColourSelectionButtons}</RowTwo>
         </GridContainer>
       </RightSide>
     </ScreenContainer>
   );
 }
 
-export default ExampleScreen;
+export default ComponantSelection;
