@@ -8,37 +8,34 @@ import {
   RowOne,
   RowTwo,
   Input,
-} from "./ComponantSelectionStyles";
+} from "./Styles";
 import SimpleGrow from "./COntrollSwitches";
 import HollowRectangle from "./HollowRectangle";
 
 
-function ComponantSelection() {
-  function hexToRgb(hex) {
-    hex = hex.replace("#", "");
+export default function ComponantSelection() {
+  const [topShadowColor, setTopShadowColor] = useState("#f50057");
+  const [rightShadowColor, setRightShadowColor] = useState("#08d5d9");
+  const [bottomShadowColor, setBottomShadowColor] = useState("#f50057");
+  const [leftShadowColor, setLeftShadowColor] = useState("#f50057");
+  const [innerTopShadowColor, setInnerTopShadowColor] = useState("#08d5d9");
+  const [innerRightShadowColor, setInnerRightShadowColor] = useState("#512da8");
+  const [innerBottomShadowColor, setInnerBottomShadowColor] =
+    useState("#2196f3");
+  const [innerLeftShadowColor, setInnerLeftShadowColor] = useState("#f50057");
 
-    const red = parseInt(hex.substring(0, 2), 16);
-    const green = parseInt(hex.substring(2, 4), 16);
-    const blue = parseInt(hex.substring(4, 6), 16);
+  const allStateValues = {
+    topShadowColor,
+    rightShadowColor,
+    bottomShadowColor,
+    leftShadowColor,
+    innerTopShadowColor,
+    innerRightShadowColor,
+    innerBottomShadowColor,
+    innerLeftShadowColor,
+  };
 
-    return {
-      r: red,
-      g: green,
-      b: blue,
-    };
-  }
-
-  const [topShadowColor, setTopShadowColor] = useState(hexToRgb("#f50057"));
-  const [rightShadowColor, setRightShadowColor] = useState(hexToRgb("#08d5d9"));
-  const [bottomShadowColor, setBottomShadowColor] = useState(hexToRgb("#f50057"));
-  const [leftShadowColor, setLeftShadowColor] = useState(hexToRgb("#f50057"));
-  const [innerTopShadowColor, setInnerTopShadowColor] = useState(hexToRgb("#08d5d9"));
-  const [innerRightShadowColor, setInnerRightShadowColor] = useState(hexToRgb("#512da8"));
-  const [innerBottomShadowColor, setInnerBottomShadowColor] = useState(hexToRgb("#2196f3"));
-  const [innerLeftShadowColor, setInnerLeftShadowColor] = useState(hexToRgb("#f50057"));
-
-  // console.log(hexToRgb(topShadowColor));
-
+  console.log(allStateValues);
 
   const ColourSelectionButtons = (
     <div>
@@ -111,9 +108,10 @@ function ComponantSelection() {
 
   return (
     <ScreenContainer>
+      {/* <BackgroundVideo src={Video} autoPlay loop muted /> */}
       <LeftSide>
         <CenteredDiv>
-          <HollowRectangle />
+          <HollowRectangle {...allStateValues} />
         </CenteredDiv>
       </LeftSide>
       <RightSide>
@@ -127,5 +125,3 @@ function ComponantSelection() {
     </ScreenContainer>
   );
 }
-
-export default ComponantSelection;

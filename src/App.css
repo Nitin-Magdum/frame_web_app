@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background-color: #1d3057; */
 }
 
 .App-logo {
@@ -21,11 +22,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(87, 14, 14);
 }
 
 .App-link {
-  color: #61dafb;
+  color: #50bddb;
 }
 
 @keyframes App-logo-spin {
