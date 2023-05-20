@@ -53,7 +53,7 @@ export default function TemporaryDrawer(props) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [ ]);
 
   const list = (
     <Box

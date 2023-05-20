@@ -108,7 +108,6 @@ export default function ComponantSelection() {
 
   return (
     <ScreenContainer>
-      {/* <BackgroundVideo src={Video} autoPlay loop muted /> */}
       <LeftSide>
         <CenteredDiv>
           <HollowRectangle {...allStateValues} />

@@ -32,19 +32,32 @@ export const CenteredDiv = styled.div`
 
 export const LeftSide = styled.div`
   width: 80%;
-  height: 100%; /* Set height to 100% of parent container (ScreenContainer) */
+  height: 100%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const RightSide = styled.div`
   width: 20%;
-  height: 100%; /* Set height to 100% of parent container (ScreenContainer) */
+  height: 100%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50% 50%;
-  height: 100%; /* Set height to 100% of parent container (RightSide) */
+  height: 100%;
+
+  @media screen and (max-width: 768px) {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const RowOne = styled.div`
@@ -59,4 +72,14 @@ export const Input = styled.input`
   padding: 2px;
   border: 1px solid #ccc;
   border-radius: 10px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
+
+export const StyledInput = styled('input')({
+  padding: '2px',
+  border: '1px solid #ccc',
+  borderRadius: '10px',
+});

@@ -17,7 +17,7 @@ const Rectangle = styled.div`
     ${(props) => props.innerLeftShadowColor} inset -50px 0 30px;
   border-radius: 20px;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   @media screen and (max-width: 768px) {
     width: 90%;
     height: 300px;
@@ -45,7 +45,7 @@ const Image = styled.img`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   @media screen and (max-width: 768px) {
     width: 90%;
     height: 300px;

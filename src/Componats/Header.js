@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import TemporaryDrawer from "./Drawer";
 
 export default function ButtonAppBar() {
@@ -21,8 +21,7 @@ export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
-        // position="static"
-        position="fixed" // For positioning AppBar Fixed
+        position="fixed"
         sx={{ backgroundColor: "white", boxShadow: "none" }}
       >
         <Toolbar>
@@ -30,12 +29,11 @@ export default function ButtonAppBar() {
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
             aria-label="menu"
             onClick={handleMenuClick}
-            sx={{ mr: 2, backgroundColor: "black" }}
+            sx={{ mr: 2, backgroundColor: "white" }}
           >
-            <MenuIcon />
+            <SettingsOutlinedIcon sx={{ color: "black" }} />
           </IconButton>
         </Toolbar>
       </AppBar>
