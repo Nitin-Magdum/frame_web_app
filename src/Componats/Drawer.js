@@ -10,6 +10,8 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
+
+
 export default function TemporaryDrawer(props) {
   const [open, setOpen] = useState(false);
   const [clickCounts, setClickCounts] = useState({});
@@ -58,7 +60,7 @@ export default function TemporaryDrawer(props) {
   const list = (
     <Box
       ref={drawerRef}
-      sx={{ width: 250 }}
+      sx={{ width: 350 }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
