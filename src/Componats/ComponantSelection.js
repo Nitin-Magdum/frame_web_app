@@ -18,6 +18,7 @@ export default function ComponantSelection() {
     bottomShadowColor: "#000000",
     leftShadowColor: "#000000",
   });
+  
   console.log("colourvalues", colourvalues);
 
   return (
