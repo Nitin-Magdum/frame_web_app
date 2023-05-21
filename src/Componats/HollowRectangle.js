@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
- `;
+`;
 
 const Rectangle = styled.div`
-  width: 600px;
-  height: 400px;
+  width: 900px;
+  height: 550px;
   box-shadow: ${(props) => props.topShadowColor} 0 0 10px,
     ${(props) => props.rightShadowColor} 20px 0 20px,
     ${(props) => props.bottomShadowColor} 0 0 30px,
@@ -51,12 +51,12 @@ const Image = styled.img`
     height: 300px;
     box-shadow: none;
     position: relative;
-    top: auto;
+    top: -15px;
     left: auto;
     transform: none;
-    margin-top: -440px;
+    margin-top: -490px;
     z-index: 1;
-    margin-left: -10px;
+    margin-left: -19px;
   }
 `;
 
@@ -66,10 +66,6 @@ export default function HollowRectangle(props) {
     rightShadowColor,
     bottomShadowColor,
     leftShadowColor,
-    innerTopShadowColor,
-    innerRightShadowColor,
-    innerBottomShadowColor,
-    innerLeftShadowColor,
   } = props;
 
   return (
@@ -79,10 +75,10 @@ export default function HollowRectangle(props) {
         rightShadowColor={rightShadowColor}
         bottomShadowColor={bottomShadowColor}
         leftShadowColor={leftShadowColor}
-        innerTopShadowColor={innerTopShadowColor}
-        innerRightShadowColor={innerRightShadowColor}
-        innerBottomShadowColor={innerBottomShadowColor}
-        innerLeftShadowColor={innerLeftShadowColor}
+        innerTopShadowColor={topShadowColor}
+        innerRightShadowColor={rightShadowColor}
+        innerBottomShadowColor={bottomShadowColor}
+        innerLeftShadowColor={leftShadowColor}
       />
       <Image src="Nature.jpg" alt="Image" />
     </Container>
