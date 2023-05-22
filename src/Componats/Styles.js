@@ -36,20 +36,20 @@ export const CenteredDiv = styled.div`
 `;
 
 export const LeftSide = styled.div`
-  width: 80%;
+  width: 75%;
   height: 100%;
-  margin: 0 auto; 
+  margin: 0 auto;
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    max-width: 1000px; 
-    margin-top: 60px;
-    order: 2; 
+    max-width: 1000px;
+    margin-top: -50px;
+    order: 2;
   }
 `;
 
 export const RightSide = styled.div`
-  width: 20%;
+  width: 25%;
   height: 100%;
   position: absolute;
   right: 0;
@@ -81,7 +81,19 @@ export const RowOne = styled.div`
   }
 `;
 
-export const RowTwo = styled.div``;
+export const RowTwo = styled.div`
+  height: 70%;
+  margin-right: 20px;
+  margin-top: -10px;
+
+  @media screen and (max-width: 768px) {
+    margin-right: 0px;
+    margin-top: 550px;
+    height: auto;
+  }
+`;
+
+
 
 export const Input = styled.input`
   padding: 2px;

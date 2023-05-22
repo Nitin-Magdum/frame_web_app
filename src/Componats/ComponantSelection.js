@@ -5,11 +5,12 @@ import {
   LeftSide,
   RightSide,
   GridContainer,
+  RowOne,
+  RowTwo,
 } from "./Styles";
-import SimpleGrow from "./ControllSwitches";
 import HollowRectangle from "./HollowRectangle";
-
-
+import AppBar from "./AppBar";
+import LevelIndicator from "./LevelIndicator";
 
 export default function ComponantSelection() {
   const [colourvalues, setColourvalues] = useState({
@@ -18,25 +19,31 @@ export default function ComponantSelection() {
     bottomShadowColor: "#000000",
     leftShadowColor: "#000000",
   });
-  
+
   console.log("colourvalues", colourvalues);
 
   return (
-    <ScreenContainer>
-      <LeftSide>
-        <CenteredDiv
-          style={{
-            marginLeft: "-190px",
-          }}
-        >
-          <HollowRectangle {...colourvalues} />
-        </CenteredDiv>
-      </LeftSide>
-      <RightSide>
-        <GridContainer>
-          <SimpleGrow setColourvalues={setColourvalues} />
-        </GridContainer>
-      </RightSide>
-    </ScreenContainer>
+    <>
+      <AppBar setColourvalues={setColourvalues} />
+      <ScreenContainer>
+        <LeftSide>
+          <CenteredDiv
+            style={{
+              marginLeft: "-190px",
+            }}
+          >
+            <HollowRectangle {...colourvalues} />
+          </CenteredDiv>
+        </LeftSide>
+        <RightSide>
+          <GridContainer>
+            <RowOne></RowOne>
+            <RowTwo>
+              <LevelIndicator />
+            </RowTwo>
+          </GridContainer>
+        </RightSide>
+      </ScreenContainer>
+    </>
   );
 }

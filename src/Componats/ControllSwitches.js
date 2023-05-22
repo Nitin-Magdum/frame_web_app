@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/system";
-import FullScreenDialog from "./PopUp"
+import FullScreenDialog from "./PopUpColour";
 
 
 const BlackLabel = styled("span")`
@@ -37,7 +37,7 @@ export default function SimpleGrow(props) {
     <div>
       <Box sx={{ display: "flex", alignItems: "center", height: 40 }}>
         <Box sx={{ marginLeft: "40px" }}>
-          <FullScreenDialog setColourvalues={props.setColourvalues}/>
+          <FullScreenDialog />
         </Box>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", height: 40 }}>

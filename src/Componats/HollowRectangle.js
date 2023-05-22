@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
+  marginetop: -100px;
 `;
 
 const Rectangle = styled.div`
@@ -18,6 +19,8 @@ const Rectangle = styled.div`
   border-radius: 20px;
   position: relative;
   z-index: 0;
+  margin-top: -200px;
+
   @media screen and (max-width: 768px) {
     width: 90%;
     height: 300px;
@@ -31,14 +34,14 @@ const Rectangle = styled.div`
       ${(props) => props.innerLeftShadowColor} inset -50px 0 30px;
     background-color: ${(props) => props.backgroundColor};
     margin-left: 10px;
-    margin-top: -100px;
+    margin-top: -10px;
     z-index: 0;
   }
 `;
 
 const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 900px;
+  height: 550px;
   object-fit: cover;
   border-radius: 20px;
   opacity: 0.8;
@@ -46,6 +49,7 @@ const Image = styled.img`
   top: 0;
   left: 0;
   z-index: 1;
+  margin-top: -200px;
   @media screen and (max-width: 768px) {
     width: 90%;
     height: 300px;

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import List from "@mui/material/List";
 import AppBar from "@mui/material/AppBar";
@@ -29,9 +28,6 @@ export default function FullScreenDialog(props) {
 
   return (
     <div>
-      {/* <Button variant="contained" onClick={handleClickOpen}>
-        Lights
-      </Button> */}
       <IconButton
         edge="start"
         color="black"
