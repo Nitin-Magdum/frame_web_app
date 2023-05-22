@@ -15,18 +15,17 @@ import DiscreteSliderValues from "./DiffuserRangeSelector";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
-    width: "100%", // Set the desired width for the dialog box
-    [theme.breakpoints.up("sm")]: {
-      width: "600px", // Adjust the width for larger screens if needed
-    },
+    width: "600px", // Set the desired width for the dialog box
+    height: "200px",
     // overflowX: "hidden", // Disable horizontal scrolling
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
   },
-  "& .MuiDialog-paperScrollPaper": {
-    overflow: "hidden",
+  '& .MuiDialog-paperScrollPaper': {
+    overflow: 'hidden',
   },
+  
 }));
 
 function BootstrapDialogTitle(props) {
