@@ -11,6 +11,7 @@ export const ColorContextProvider = ({ children }) => {
   const [right, setRight] = useState("#262626");
   const [buttonclick, setbuttonclick] = useState(false);
   const [snckbar, setSnckbar] = useState(false);
+  const [diffusion, setDiffusion] = useState(50);
 
   const contextValue = {
     top,
@@ -24,6 +25,8 @@ export const ColorContextProvider = ({ children }) => {
     setbuttonclick,
     snckbar,
     setSnckbar,
+    diffusion,
+    setDiffusion,
   };
 
   useEffect(() => {

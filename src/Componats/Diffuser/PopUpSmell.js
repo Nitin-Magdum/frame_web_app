@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useContext, useState } from "react";
+import { ColorContext } from "../../Context/ColourContext/ColorContext";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -10,6 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import LensBlurOutlinedIcon from "@mui/icons-material/LensBlurOutlined";
+
 import DiscreteSliderValues from "./DiffuserRangeSelector";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -29,7 +31,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
-
   return (
     <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
       {children}
@@ -57,12 +58,14 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs() {
-  const [open, setOpen] = React.useState(false);
+  const { diffusion } = useContext(ColorContext);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
+    console.log("diffusion", diffusion);
     setOpen(false);
   };
 
@@ -88,7 +91,7 @@ export default function CustomizedDialogs() {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Modal title
+          SELECT DIFFUSION RATE
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography
