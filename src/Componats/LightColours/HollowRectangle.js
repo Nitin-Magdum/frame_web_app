@@ -1,4 +1,8 @@
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { ColorContext } from "../../Context/ColourContext/ColorContext"; // Replace '../../Context/ColourContext/ColorContext' with the actual path to your ColorContext file
+
+
 
 const Container = styled.div`
   position: relative;
@@ -64,25 +68,25 @@ const Image = styled.img`
   }
 `;
 
-export default function HollowRectangle(props) {
+export default function HollowRectangle() {
   const {
-    topShadowColor,
-    rightShadowColor,
-    bottomShadowColor,
-    leftShadowColor,
-  } = props;
+    top,
+    right,
+    bottom,
+    left,
+  } = useContext(ColorContext); 
 
   return (
     <Container>
       <Rectangle
-        topShadowColor={topShadowColor}
-        rightShadowColor={rightShadowColor}
-        bottomShadowColor={bottomShadowColor}
-        leftShadowColor={leftShadowColor}
-        innerTopShadowColor={topShadowColor}
-        innerRightShadowColor={rightShadowColor}
-        innerBottomShadowColor={bottomShadowColor}
-        innerLeftShadowColor={leftShadowColor}
+        topShadowColor={top}
+        rightShadowColor={right}
+        bottomShadowColor={bottom}
+        leftShadowColor={left}
+        innerTopShadowColor={top}
+        innerRightShadowColor={right}
+        innerBottomShadowColor={bottom}
+        innerLeftShadowColor={left}
       />
       <Image src="Nature.jpg" alt="Image" />
     </Container>

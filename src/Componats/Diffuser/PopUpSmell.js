@@ -22,10 +22,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
   },
-  '& .MuiDialog-paperScrollPaper': {
-    overflow: 'hidden',
+  "& .MuiDialog-paperScrollPaper": {
+    overflow: "hidden",
   },
-  
 }));
 
 function BootstrapDialogTitle(props) {

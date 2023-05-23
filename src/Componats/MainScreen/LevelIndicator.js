@@ -19,9 +19,9 @@ export default function LevelIndicator() {
   const [value, setValue] = useState(50);
   const [dataReceived, setDataReceived] = useState(false);
 
-  const startColor = "#262626"; // cornflowerblue
+  const startColor = "#262626"; 
 
-  const radius = dataReceived ? 130 : 70; // Adjusted radius based on dataReceived
+  const radius = dataReceived ? 90 : 70; 
   const interpolate = interpolateRgb(startColor, startColor);
   const fillColor = interpolate(value / 100);
   const gradientStops = [
@@ -39,6 +39,7 @@ export default function LevelIndicator() {
     },
   ];
 
+  //This useEffect is Reserve for geting values from Firebase and setting the level
   useEffect(() => {
     // Simulating API call
     setTimeout(() => {
@@ -46,7 +47,7 @@ export default function LevelIndicator() {
       setDataReceived(true);
 
       // Update value based on received data from Firebase
-      const receivedValue = 75; // Will Replace with the actual received data
+      const receivedValue = 60; // Will Replace with the actual received data
       setValue(receivedValue);
     }, 2000);
   }, []);

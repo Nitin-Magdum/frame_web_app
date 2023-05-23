@@ -7,8 +7,8 @@ import {
   GridContainer,
   RowOne,
   RowTwo,
-} from "./Styles";
-import HollowRectangle from "./HollowRectangle";
+} from "../Styles";
+import HollowRectangle from "../LightColours/HollowRectangle";
 import AppBar from "./AppBar";
 import LevelIndicator from "./LevelIndicator";
 

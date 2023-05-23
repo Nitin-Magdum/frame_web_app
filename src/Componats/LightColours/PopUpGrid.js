@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import ColourPicker from "./ColourPicker";
 import { styled } from "@mui/system";
+import { ColorContext } from "../../Context/ColourContext/ColorContext";
 
 const ResponsiveGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
@@ -12,18 +13,20 @@ const ResponsiveGrid = styled(Grid)(({ theme }) => ({
 }));
 
 export default function PopUpGrid(props) {
-  const [top, setTop] = useState("#000000");
-  const [bottom, setBottom] = useState("#000000");
-  const [left, setLeft] = useState("#000000");
-  const [right, setRight] = useState("#000000");
+  const {
+    top,
+    setTop,
+    bottom,
+    setBottom,
+    left,
+    setLeft,
+    right,
+    setRight,
+    setButoonlick,
+  } = useContext(ColorContext);
 
   const onSubmit = () => {
-    props.setColourvalues({
-      topShadowColor: top,
-      rightShadowColor: bottom,
-      bottomShadowColor: left,
-      leftShadowColor: right,
-    });
+    setButoonlick(true);
     props.handleClose();
   };
 

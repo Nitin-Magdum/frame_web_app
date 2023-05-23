@@ -1,14 +1,14 @@
 import React from "react";
 import "./App.css";
-import ComponantSelection from "./Componats/ComponantSelection";
-
+import ComponantSelection from "./Componats/MainScreen/ComponantSelection";
+import { ColorContextProvider } from "./Context/ColourContext/ColorContext";
 
 export default function App() {
   return (
     <div className="App">
-      <ComponantSelection data-testid="componant-selection-component"/>
+      <ColorContextProvider>
+        <ComponantSelection />
+      </ColorContextProvider>
     </div>
   );
 }
-
-//imported in CompoantSelection 

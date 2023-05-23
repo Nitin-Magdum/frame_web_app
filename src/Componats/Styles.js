@@ -83,7 +83,7 @@ export const RowOne = styled.div`
 
 export const RowTwo = styled.div`
   height: 70%;
-  margin-right: 20px;
+  margin-left: 80px;
   margin-top: -10px;
 
   @media screen and (max-width: 768px) {
@@ -107,3 +107,9 @@ export const FloatingGradientText = styled.h1`
   -webkit-text-fill-color: transparent;
   animation: ${floatingAnimation} 3s infinite;
 `;
+
+export const IconWrapper = styled("div")`
+  width: 150px; 
+  height: 150px; 
+`;
+

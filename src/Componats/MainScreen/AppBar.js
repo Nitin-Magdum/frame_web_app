@@ -4,19 +4,15 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import { ReactComponent as Logo } from "../Asset/Ingenius_Logo.svg";
+import { ReactComponent as Logo } from "../../Asset/Ingenius_Logo.svg";
 import { styled } from "@mui/system";
-import FullScreenDialog from "./PopUpColour";
-import CustomizedDialogs from "./PopUpSmell";
-import PopUpSoundUpload from "./PopUpSoundUpload";
-
-const IconWrapper = styled("div")`
-  width: 150px; /* Set the desired width for the icon */
-  height: 150px; /* Set the desired height for the icon */
-`;
+import { IconWrapper } from "../Styles";
+import FullScreenDialog from "../LightColours/PopUpColour";
+import CustomizedDialogs from "../Diffuser/PopUpSmell";
+import PopUpSoundUpload from "../Audio/PopUpSoundUpload";
 
 const AppBarWrapper = styled(AppBar)`
-  height: 90px; /* Set the desired height for the AppBar */
+  height: 90px;
 `;
 
 export default function ButtonAppBar(props) {
@@ -52,7 +48,7 @@ export default function ButtonAppBar(props) {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <FullScreenDialog setColourvalues={props.setColourvalues} />
+            <FullScreenDialog />
           </IconButton>
           <IconButton
             size="large"

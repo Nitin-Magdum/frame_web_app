@@ -8,8 +8,10 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
-import Lights from "./Title";
+import Lights from "../Title";
 import PopUpGrid from "./PopUpGrid";
+
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
