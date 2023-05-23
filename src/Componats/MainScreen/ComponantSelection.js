@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   ScreenContainer,
   CenteredDiv,
@@ -11,13 +11,17 @@ import {
 import HollowRectangle from "../LightColours/HollowRectangle";
 import AppBar from "./AppBar";
 import LevelIndicator from "./LevelIndicator";
+import { ColorContext } from "../../Context/ColourContext/ColorContext";
 
 export default function ComponantSelection() {
+  const colorContext = useContext(ColorContext);
+  const { top, right, bottom, left } = colorContext;
+
   const [colourvalues, setColourvalues] = useState({
-    topShadowColor: "#000000",
-    rightShadowColor: "#000000",
-    bottomShadowColor: "#000000",
-    leftShadowColor: "#000000",
+    topShadowColor: top,
+    rightShadowColor: right,
+    bottomShadowColor: bottom,
+    leftShadowColor: left,
   });
 
   console.log("colourvalues", colourvalues);
