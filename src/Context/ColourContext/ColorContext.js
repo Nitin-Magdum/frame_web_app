@@ -5,10 +5,10 @@ import SnackBar from "../../Componats/SnackBar";
 export const ColorContext = createContext();
 
 export const ColorContextProvider = ({ children }) => {
-  const [top, setTop] = useState("#262626");
-  const [bottom, setBottom] = useState("#262626");
-  const [left, setLeft] = useState("#262626");
-  const [right, setRight] = useState("#262626");
+  const [top, setTop] = useState("");
+  const [bottom, setBottom] = useState("");
+  const [left, setLeft] = useState("");
+  const [right, setRight] = useState("");
   const [buttonclick, setButtonclick] = useState(false);
   const [snackbar, setSnackbar] = useState(false);
   const [diffusion, setDiffusion] = useState(50);
