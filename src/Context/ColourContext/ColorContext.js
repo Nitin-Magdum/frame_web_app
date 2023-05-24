@@ -1,9 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import hexToRgb from "./HexToRGB";
 import SnackBar from "../../Componats/SnackBar";
-
-// Rest of your code...
 
 export const ColorContext = createContext();
 
@@ -18,7 +15,7 @@ export const ColorContextProvider = ({ children }) => {
   const [submitslider, setSubmitslider] = useState(false);
   const [audio, setAudio] = useState([]);
   const [uploadstatus, setUploadstatus] = useState(false);
-  const [audiourl, setAudiourl] = useState(""); //state for uploading status button
+  const [audiourl, setAudiourl] = useState(null);
 
   const contextValue = {
     top,
@@ -114,7 +111,6 @@ export const ColorContextProvider = ({ children }) => {
       const audioFileName = { audiourl };
 
       try {
-        // Post the audioUrl to the database
         await fetch(
           "https://mockup--pro-default-rtdb.firebaseio.com/audioData.json",
           {
@@ -126,7 +122,7 @@ export const ColorContextProvider = ({ children }) => {
           }
         );
 
-        setUploadstatus(false); // Set uploadstatus to false after successful upload
+        setUploadstatus(false);
         setSnackbar(true);
         console.log("Audio file uploaded successfully");
       } catch (error) {

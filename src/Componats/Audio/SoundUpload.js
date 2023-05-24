@@ -52,7 +52,7 @@ const UploadComponent = () => {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
           setDataUrl(downloadURL);
           setAudiourl(downloadURL);
-          console.log("Data URL:", downloadURL); // Log the dataUrl
+          console.log("Data URL:", downloadURL); 
         }
       );
     }
