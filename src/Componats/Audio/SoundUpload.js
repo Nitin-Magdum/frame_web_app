@@ -1,57 +1,82 @@
-import { useState } from "react";
-import FileUpload from "react-material-file-upload";
+import React, { useState, useContext } from "react";
+import Button from "@mui/material/Button";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { ColorContext } from "../../Context/ColourContext/ColorContext";
+import firebaseApp from "../../firebase";
+import styled from "styled-components";
 
-export default function App() {
-  const [files, setFiles] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+const StyledInput = styled.input`
+  /* Add your custom styles here */
+  /* For example: */
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+`;
 
-  const handleFileChange = (selectedFiles) => {
-    const invalidFiles = selectedFiles.filter(
-      (file) => !file.type.startsWith("audio/")
-    );
+const UploadComponent = () => {
+  const {  setAudiourl } = useContext(ColorContext);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadError, setUploadError] = useState(null);
+  const [dataUrl, setDataUrl] = useState(null);
 
-    if (invalidFiles.length > 0) {
-      setErrorMessage("Please upload only audio files.");
-    } else {
-      setFiles(selectedFiles);
-      setErrorMessage("");
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  
+  };
+
+  const handleUpload = () => {
+    if (selectedFile && selectedFile.type.includes("audio")) {
+      const storage = getStorage(firebaseApp);
+      const storageRef = ref(storage, "uploads/" + selectedFile.name);
+      const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploadProgress(progress);
+        },
+        (error) => {
+          setUploadError(error.message);
+        },
+        async () => {
+          console.log("Upload complete!");
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          setDataUrl(downloadURL);
+          setAudiourl(downloadURL);
+          console.log("Data URL:", downloadURL); // Log the dataUrl
+        }
+      );
     }
   };
 
   return (
-    <div className="App" style={{ backgroundColor: "white" }}>
-      <FileUpload
-        value={files}
-        onChange={handleFileChange}
-        multiple={false}
-        rightLabel="to select files"
-        buttonLabel="click here"
-        buttonRemoveLabel="Remove all"
-        maxFileSize={10}
-        maxUploadFiles={0}
-        bannerProps={{
-          elevation: 0,
-          variant: "outlined",
-          sx: { border: "none", p: 3 },
-        }}
-        containerProps={{
-          elevation: 0,
-          variant: "inherit",
-          sx: { border: "none", p: 3 },
-        }}
-        accept="audio/*"
-      />
-      <div>{errorMessage && <p>{errorMessage}</p>}</div>
-
-      <style>{`
-        @media (max-width: 600px) {
-          /* Adjust styles for smaller screens */
-          .App {
-            /* Example responsive style */
-            padding: 20px;
-          }
-        }
-      `}</style>
+    <div style={{ marginLeft: "130px" }}>
+      <div style={{ width: 300 }}>
+        <StyledInput type="file" accept="audio/*" onChange={handleFileChange} />
+      </div>
+      <Button
+        variant="outlined"
+        onClick={handleUpload}
+        style={{ marginLeft: "100px", marginTop: "10px" }}
+      >
+        Upload
+      </Button>
+      {uploadProgress > 0 && (
+        <p style={{marginLeft: "60px"}}>Upload progress: {Math.round(uploadProgress)}%</p>
+      )}
+      {uploadError && <p>Error: {uploadError}</p>}
+      {dataUrl && <audio controls src={dataUrl} />}
     </div>
   );
-}
+};
+
+export default UploadComponent;

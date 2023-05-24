@@ -8,18 +8,18 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const SnackBar = () => {
-  const { snckbar, setSnckbar } = useContext(ColorContext);
+  const { snackbar, setSnackbar } = useContext(ColorContext);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
 
-    setSnckbar(false);
+    setSnackbar(false);
   };
 
   return (
-    <Snackbar open={snckbar} autoHideDuration={3000} onClose={handleClose}>
+    <Snackbar open={snackbar} autoHideDuration={3000} onClose={handleClose}>
       <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
         Data Sent successfully
       </Alert>

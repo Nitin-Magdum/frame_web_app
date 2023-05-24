@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useContext,useState } from "react";
+import { ColorContext } from "../../Context/ColourContext/ColorContext"; 
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -10,14 +11,14 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import QueueMusicOutlinedIcon from "@mui/icons-material/QueueMusicOutlined";
-import AudioUpload from "./SoundUpload";
+import AudioDropzone from "./SoundUpload";
 import InteractiveList from "./UploadSongList";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
     width: "900px",
-    height: "400px",
+    height: "700px",
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
@@ -61,13 +62,16 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function PopUpSoundUpload() {
-  const [open, setOpen] = React.useState(false);
+  const { audio, setUploadstatus } = useContext(ColorContext);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
+    console.log("audio",audio);
     setOpen(false);
+    setUploadstatus(true);
   };
 
   return (
@@ -95,15 +99,17 @@ export default function PopUpSoundUpload() {
           UPLOAD THE MUSIC
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography
+          <div
             sx={{
               display: "flex",
               justifyContent: "center",
-              marginLeft: "-320px",
+              alignItems: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
-            <AudioUpload />
-          </Typography>
+            <AudioDropzone width="565px" />
+          </div>
           <Typography gutterBottom>
             <InteractiveList />
           </Typography>

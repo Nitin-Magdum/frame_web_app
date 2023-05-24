@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
-import { ColorContext } from "../../Context/ColourContext/ColorContext";
+import React, { useContext,useState } from "react";
+import { ColorContext } from "../../Context/ColourContext/ColorContext"; 
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import useMediaQuery from "@mui/material/useMediaQuery";;
+
 
 const marks = [
   {

@@ -17,9 +17,8 @@ import DiscreteSliderValues from "./DiffuserRangeSelector";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
-    width: "600px", // Set the desired width for the dialog box
+    width: "600px",
     height: "200px",
-    // overflowX: "hidden", // Disable horizontal scrolling
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
@@ -58,7 +57,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs() {
-  const { diffusion } = useContext(ColorContext);
+  const { diffusion, setSubmitslider } = useContext(ColorContext);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -67,6 +66,7 @@ export default function CustomizedDialogs() {
   const handleClose = () => {
     console.log("diffusion", diffusion);
     setOpen(false);
+    setSubmitslider(true);
   };
 
   return (

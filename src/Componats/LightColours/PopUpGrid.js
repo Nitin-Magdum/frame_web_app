@@ -22,11 +22,11 @@ export default function PopUpGrid(props) {
     setLeft,
     right,
     setRight,
-    setbuttonclick,
+    setButtonclick,
   } = useContext(ColorContext);
 
   const onSubmit = () => {
-    setbuttonclick(true);
+    setButtonclick(true);
     props.handleClose();
   };
 
