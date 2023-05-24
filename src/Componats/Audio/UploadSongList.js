@@ -29,9 +29,7 @@ export default function UploadSongList() {
         const urls = audioData.map((item) => item.audioFileName.audiourl);
         const titles = urls.map((url) => {
           const encodedTitle = url.match(/uploads%2F([^/]+)\.mp3/)[1];
-          const decodedTitle = decodeURIComponent(
-            encodedTitle.replace(/\+/g, " ")
-          );
+          const decodedTitle = decodeURIComponent(encodedTitle.replace(/\+/g, " "));
           return decodedTitle;
         });
 
@@ -47,9 +45,7 @@ export default function UploadSongList() {
   const handleAudioClick = (index) => {
     if (activeAudioIndex !== index) {
       // Pause the previously active audio, if any
-      const prevAudioElement = document.getElementById(
-        `audio-${activeAudioIndex}`
-      );
+      const prevAudioElement = document.getElementById(`audio-${activeAudioIndex}`);
       if (prevAudioElement && !prevAudioElement.paused) {
         prevAudioElement.pause();
       }
@@ -77,11 +73,7 @@ export default function UploadSongList() {
   return (
     <Box sx={{ marginLeft: "210px" }}>
       <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
-        <Typography
-          sx={{ mt: 2, mb: 0, marginLeft: "-10px" }}
-          variant="h7"
-          component="div"
-        >
+        <Typography sx={{ mt: 2, mb: 0, marginLeft: "-10px" }} variant="h7" component="div">
           <strong>Uploaded Music List</strong>
         </Typography>
         <Demo>
@@ -94,9 +86,17 @@ export default function UploadSongList() {
                   onClick={() => handleAudioClick(index)}
                 >
                   <ListItemIcon>
-                    <MusicNoteIcon />
+                    <MusicNoteIcon sx={{ color: index === 0 ? "green" : "inherit" }} />
                   </ListItemIcon>
-                  <ListItemText primary={title} />
+                  <ListItemText
+                    primary={title}
+                    primaryTypographyProps={{
+                      sx: {
+                        color: index === 0 ? "green" : "inherit",
+                        fontWeight: index === 0 ? "bold" : "normal",
+                      },
+                    }}
+                  />
                   <audio id={`audio-${index}`} src={audioURLs[index]} />
                 </ListItem>
               ))
