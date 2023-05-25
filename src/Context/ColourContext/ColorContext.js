@@ -42,7 +42,7 @@ export const ColorContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const postColorData = async () => {
+    const updateColorData = async () => {
       const colourData = {
         top: hexToRgb(top),
         bottom: hexToRgb(bottom),
@@ -52,9 +52,9 @@ export const ColorContextProvider = ({ children }) => {
 
       try {
         await fetch(
-          "https://mockup--pro-default-rtdb.firebaseio.com/ColourData.json",
+          "https://mockup--pro-default-rtdb.firebaseio.com/ColourData/-NW8K9-QLyqvmAYUtumv/.json",
           {
-            method: "POST",
+            method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
@@ -64,28 +64,29 @@ export const ColorContextProvider = ({ children }) => {
         setButtonclick(false);
         setSnackbar(true);
       } catch (error) {
-        console.error("Error posting colourData:", error);
+        console.error("Error updating colourData:", error);
       }
     };
 
     if (buttonclick) {
       const colourData = { top, bottom, left, right };
       console.log("From Context data", colourData);
-      postColorData();
+      updateColorData();
     }
   }, [buttonclick, top, bottom, left, right]);
+  
 
   useEffect(() => {
-    const postSliderData = async () => {
+    const updateSliderData = async () => {
       const sliderData = {
         diffusion,
       };
 
       try {
         await fetch(
-          "https://mockup--pro-default-rtdb.firebaseio.com/sliderData.json",
+          "https://mockup--pro-default-rtdb.firebaseio.com/sliderData/-NWDhq96A1VrVAYqrhVO/.json",
           {
-            method: "POST",
+            method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
@@ -95,16 +96,17 @@ export const ColorContextProvider = ({ children }) => {
         setSubmitslider(false);
         setSnackbar(true);
       } catch (error) {
-        console.error("Error posting sliderData:", error);
+        console.error("Error updating sliderData:", error);
       }
     };
 
     if (submitslider) {
       const sliderData = { diffusion };
       console.log("From Context sliderData", sliderData);
-      postSliderData();
+      updateSliderData();
     }
   }, [submitslider, diffusion]);
+  
 
   useEffect(() => {
     const uploadAudioData = async () => {
